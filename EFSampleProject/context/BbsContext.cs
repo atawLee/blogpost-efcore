@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using EFSampleProject.models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFSampleProject;
+namespace EFSampleProject.context;
 
 public partial class BbsContext : DbContext
 {
-    public BbsContext()
-    {
-    }
-
     public BbsContext(DbContextOptions<BbsContext> options)
         : base(options)
     {
@@ -18,10 +15,6 @@ public partial class BbsContext : DbContext
     public virtual DbSet<Board> Boards { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=127.0.0.1;port=3306;user=root;password=dlwhdgns;database=BBS", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.33-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
