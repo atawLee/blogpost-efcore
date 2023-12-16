@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFSampleProject.models;
 
 public partial class Board
 {
+    [Key]
     public int BoardId { get; set; }
 
     public string Title { get; set; } = null!;
